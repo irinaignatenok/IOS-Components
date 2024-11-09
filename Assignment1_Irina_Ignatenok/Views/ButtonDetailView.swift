@@ -1,7 +1,7 @@
 import SwiftUI
 
 enum ButtonStyleType: String, CaseIterable, Identifiable {
-    case automatic, plain, borderless, bordered, prominent, custom
+    case  plain,  bordered, prominent, custom,destructive
     
     var id: Self { self }
 }
@@ -10,10 +10,13 @@ struct ButtonDetailView: View {
     let component: Component
     var viewModel: ComponentListViewModel
     @State private var isPresented = false
+    @State private var isShown = false
+    @State private var  isShownLink = false
+   
     @State private var showingCode = false
     @State private var textColor: Color = .accentColor
     @State private var copyButtonText: String = "Copy"
-    @State private var selectedStyle: ButtonStyleType = .automatic
+    @State private var selectedStyle: ButtonStyleType = .bordered
 
     var body: some View {
         NavigationStack {
@@ -49,7 +52,7 @@ struct ButtonDetailView: View {
                 
                   
                 }
-                .padding()
+
                 HStack{
                     if (selectedStyle == .plain){
                         Button("Button") {
@@ -61,8 +64,69 @@ struct ButtonDetailView: View {
                             print("Button pressed!")
                         }
                         .buttonStyle(.bordered)
+                    }else if (selectedStyle == .prominent){
+                        Button("Button") {
+                            print("Button pressed!")
+                        }
+                        .buttonStyle(.borderedProminent)
+                    }else if (selectedStyle == .custom){
+                        Button("Button", systemImage: "heart") {
+                          
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .foregroundStyle(.black)
+                        .tint(.pink)
+                        .font(.headline)
+                        .controlSize(.large)
+                        .foregroundColor(Color.white)
+                    }else {
+                        Button("Button", role: .destructive) {
+                            
+                        }
+                        .buttonStyle(.bordered)
                     }
                 }
+                HStack{
+                    Text("Link")
+                        .font(.headline)
+                    Spacer()
+                    
+                    
+                    Button(action: {
+                        isShown.toggle()
+                       
+                    }) {
+                        Image(systemName: "book")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.accentColor)
+                    }
+                }
+                HStack{
+                    Link("Apple.com", destination: URL(string: "https://www.apple.com")!)
+                        .padding()
+                }
+                HStack{
+                    Text("Share Link")
+                        .font(.headline)
+                    Spacer()
+                   
+                    
+                    Button(action: {
+                        isShownLink.toggle()
+                       
+                    }) {
+                        Image(systemName: "book")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .foregroundColor(.accentColor)
+                    }
+                }
+                HStack {
+                    ShareLink(item: URL(string: "https://www.apple.com")!)
+                }
+               
+                
             }
         }
         
@@ -78,6 +142,7 @@ struct ButtonDetailView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     isPresented.toggle()
+                    isShown = false
                 }) {
                     Image(systemName: "book")
                         .resizable()
@@ -85,6 +150,18 @@ struct ButtonDetailView: View {
                         .foregroundColor(.accentColor)
                 }
             }
+        }
+        .sheet(isPresented: $isShown) {
+            SFSafariView(url:URL(string:
+                            "https://developer.apple.com/documentation/swiftui/link")!)
+        }
+        .sheet(isPresented: $isShownLink) {
+            SFSafariView(url:URL(string:
+                            "https://developer.apple.com/documentation/swiftui/sharelink")!)
+        }
+        .sheet(isPresented: $isPresented) {
+            SFSafariView(url:URL(string:
+                            component.documentationURL)!)
         }
         .sheet(isPresented: $showingCode) {
             NavigationStack {
