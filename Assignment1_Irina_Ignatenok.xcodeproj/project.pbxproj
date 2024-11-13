@@ -22,6 +22,8 @@
 		7550F2D52CE3D74C0035EEE5 /* ProgressViewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2D42CE3D74C0035EEE5 /* ProgressViewDetailView.swift */; };
 		7550F2D92CE42B3B0035EEE5 /* StackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2D82CE42B3B0035EEE5 /* StackDetailView.swift */; };
 		7550F2DB2CE433DE0035EEE5 /* CodeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2DA2CE433DE0035EEE5 /* CodeSheet.swift */; };
+		7550F2DD2CE460800035EEE5 /* FormDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2DC2CE460800035EEE5 /* FormDetailView.swift */; };
+		7550F2E02CE466790035EEE5 /* NavigationStackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2DF2CE466790035EEE5 /* NavigationStackDetailView.swift */; };
 		75D416162CDAA20B006F4835 /* ComponentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D416152CDAA20B006F4835 /* ComponentListViewModel.swift */; };
 		75D4161A2CDD3CD3006F4835 /* ComponentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D416192CDD3CD3006F4835 /* ComponentDetailView.swift */; };
 		75D4161C2CDD8043006F4835 /* TextDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4161B2CDD8043006F4835 /* TextDetailView.swift */; };
@@ -47,6 +49,8 @@
 		7550F2D42CE3D74C0035EEE5 /* ProgressViewDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewDetailView.swift; sourceTree = "<group>"; };
 		7550F2D82CE42B3B0035EEE5 /* StackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackDetailView.swift; sourceTree = "<group>"; };
 		7550F2DA2CE433DE0035EEE5 /* CodeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSheet.swift; sourceTree = "<group>"; };
+		7550F2DC2CE460800035EEE5 /* FormDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormDetailView.swift; sourceTree = "<group>"; };
+		7550F2DF2CE466790035EEE5 /* NavigationStackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationStackDetailView.swift; sourceTree = "<group>"; };
 		75D416152CDAA20B006F4835 /* ComponentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentListViewModel.swift; sourceTree = "<group>"; };
 		75D416192CDD3CD3006F4835 /* ComponentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDetailView.swift; sourceTree = "<group>"; };
 		75D4161B2CDD8043006F4835 /* TextDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetailView.swift; sourceTree = "<group>"; };
@@ -140,7 +144,9 @@
 		7550F2D72CE42B260035EEE5 /* ContainerViews */ = {
 			isa = PBXGroup;
 			children = (
+				7550F2DF2CE466790035EEE5 /* NavigationStackDetailView.swift */,
 				7550F2D82CE42B3B0035EEE5 /* StackDetailView.swift */,
+				7550F2DC2CE460800035EEE5 /* FormDetailView.swift */,
 			);
 			path = ContainerViews;
 			sourceTree = "<group>";
@@ -232,7 +238,9 @@
 				7506B0D22CD55297005ED4A5 /* ListModelStore.swift in Sources */,
 				7550F2CF2CE3C90C0035EEE5 /* ButtonWithLabel.swift in Sources */,
 				7506B0C32CD55174005ED4A5 /* ComponentContentView.swift in Sources */,
+				7550F2E02CE466790035EEE5 /* NavigationStackDetailView.swift in Sources */,
 				75D416162CDAA20B006F4835 /* ComponentListViewModel.swift in Sources */,
+				7550F2DD2CE460800035EEE5 /* FormDetailView.swift in Sources */,
 				7506B0C12CD55174005ED4A5 /* Assignment1_Irina_IgnatenokApp.swift in Sources */,
 				75D416262CDE9CEB006F4835 /* ButtonDetailView.swift in Sources */,
 				75D4161A2CDD3CD3006F4835 /* ComponentDetailView.swift in Sources */,

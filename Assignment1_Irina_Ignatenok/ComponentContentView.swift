@@ -79,6 +79,10 @@ struct RenderedItemsView: View {
                ProgressViewDetailView(component: item, viewModel: ComponentListViewModel())
            case "Stack":
                StackDetailView(component: item, viewModel: ComponentListViewModel())
+           case "Form":
+               FormDetailView(component: item, viewModel: ComponentListViewModel())
+           case "Navigation Link":
+               NavigationStackDetailView(component: item)
 
 //           default:
 //               DefaultDetailView(component: item) // Fallback view

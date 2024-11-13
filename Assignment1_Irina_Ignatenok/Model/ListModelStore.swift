@@ -101,7 +101,44 @@ extension ListModelStore {
 """),
             Component(name: "Stack", iconName: "square.stack.3d.up", category: "Container Views", documentationURL: "https://developer.apple.com/documentation/swiftui/vstack", exampleCode:
                         """
-                       
+                       var body: some View {
+                           HStack(
+                               alignment: .top,
+                               spacing: 10
+                           ) {
+                               ForEach(
+                                   1...5,
+                               ) {
+                                   Text("Item")
+                               }
+                           }
+                       }
+"""),
+            Component(name: "Form", iconName: "pencil", category: "Container Views", documentationURL: "https://developer.apple.com/documentation/swiftui/form", exampleCode:
+                        """
+                           Form {
+                                  Section(header: Text("Notifications")) {
+                                      Picker("Notify Me About", selection: $notifyMeAbout) {
+                                          Text("Direct Messages").tag(NotifyMeAboutType.directMessages)
+                                          Text("Mentions").tag(NotifyMeAboutType.mentions)
+                                          Text("Anything").tag(NotifyMeAboutType.anything)
+                                      }
+                                      Toggle("Play notification sounds", isOn: $playNotificationSounds)
+                                      Toggle("Send read receipts", isOn: $sendReadReceipts)
+                                  }
+}
+"""),
+            Component(name: "Navigation Link", iconName: "square.stack.3d.down.right", category: "Container Views", documentationURL: "https://developer.apple.com/documentation/swiftui/NavigationStack", exampleCode:
+                        """
+                                 NavigationStack {
+                                     List(colleges) { college in
+                                         NavigationLink(college.name, value: college)
+                                     }
+                                     .navigationDestination(for: College.self) { college in
+                                         CollegeDetails(college: college)
+                                     }
+                                     .navigationTitle("Colleges")
+                                 }
 """),
         
         ]
@@ -109,3 +146,4 @@ extension ListModelStore {
     }
         
 }
+
