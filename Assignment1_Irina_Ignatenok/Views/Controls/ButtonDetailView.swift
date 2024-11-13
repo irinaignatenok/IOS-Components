@@ -86,42 +86,14 @@ struct ButtonDetailView: View {
                         .buttonStyle(.bordered)
                     }
                 }
-                HStack{
-                    Text("Link")
-                        .font(.headline)
-                    Spacer()
-                    
-                    
-                    Button(action: {
-                        isShown.toggle()
-                       
-                    }) {
-                        Image(systemName: "book")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(.accentColor)
-                    }
-                }
+                HeaderView(title: "Link", isShown: $isShown)
+              
                 HStack{
                     Link("Apple.com", destination: URL(string: "https://www.apple.com")!)
                         .padding()
                 }
-                HStack{
-                    Text("Share Link")
-                        .font(.headline)
-                    Spacer()
-                   
-                    
-                    Button(action: {
-                        isShownLink.toggle()
-                       
-                    }) {
-                        Image(systemName: "book")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(.accentColor)
-                    }
-                }
+                HeaderView(title: "Share Link", isShown: $isShownLink)
+           
                 HStack {
                     ShareLink(item: URL(string: "https://www.apple.com")!)
                 }
@@ -142,7 +114,7 @@ struct ButtonDetailView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button(action: {
                     isPresented.toggle()
-                    isShown = false
+//                   
                 }) {
                     Image(systemName: "book")
                         .resizable()
@@ -183,6 +155,7 @@ struct ButtonDetailView: View {
                         }
                         .padding(.bottom)
                     }
+                    
                 }
                 .navigationTitle(component.name)
                 .toolbar {
@@ -200,6 +173,7 @@ struct ButtonDetailView: View {
             }
         }
     }
+    
 
     // Function to return the appropriate button style
   
@@ -239,3 +213,5 @@ struct ButtonDetailView_Previews: PreviewProvider {
         ButtonDetailView(component: mockComponent, viewModel: viewModel)
     }
 }
+
+
