@@ -8,11 +8,20 @@
 import SwiftUI
 
 struct ButtonWithLabel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    var label: String
+    var action: () -> Void
 
-#Preview {
-    ButtonWithLabel()
+    var body: some View {
+        HStack {
+            Text(label)
+                .font(.headline)
+            Spacer()
+            Button(action: action) {
+                Image(systemName: "curlybraces")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.accentColor)
+            }
+        }
+    }
 }

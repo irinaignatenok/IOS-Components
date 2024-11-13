@@ -13,6 +13,15 @@
 		7506B0C82CD55174005ED4A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7506B0C72CD55174005ED4A5 /* Preview Assets.xcassets */; };
 		7506B0D02CD551C4005ED4A5 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7506B0CF2CD551C4005ED4A5 /* Component.swift */; };
 		7506B0D22CD55297005ED4A5 /* ListModelStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7506B0D12CD55297005ED4A5 /* ListModelStore.swift */; };
+		7520DDB02CE2E3840044D77A /* MenuDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DDAF2CE2E3840044D77A /* MenuDetailView.swift */; };
+		7520DDB22CE2F6360044D77A /* PickerDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DDB12CE2F6360044D77A /* PickerDetailView.swift */; };
+		7520DDB42CE309BA0044D77A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7520DDB32CE309BA0044D77A /* HeaderView.swift */; };
+		7550F2CC2CE3C7A20035EEE5 /* InputsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2CB2CE3C7A20035EEE5 /* InputsDetailView.swift */; };
+		7550F2CF2CE3C90C0035EEE5 /* ButtonWithLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2CE2CE3C90C0035EEE5 /* ButtonWithLabel.swift */; };
+		7550F2D32CE3CE620035EEE5 /* CustomToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2D22CE3CE620035EEE5 /* CustomToolbar.swift */; };
+		7550F2D52CE3D74C0035EEE5 /* ProgressViewDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2D42CE3D74C0035EEE5 /* ProgressViewDetailView.swift */; };
+		7550F2D92CE42B3B0035EEE5 /* StackDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2D82CE42B3B0035EEE5 /* StackDetailView.swift */; };
+		7550F2DB2CE433DE0035EEE5 /* CodeSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7550F2DA2CE433DE0035EEE5 /* CodeSheet.swift */; };
 		75D416162CDAA20B006F4835 /* ComponentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D416152CDAA20B006F4835 /* ComponentListViewModel.swift */; };
 		75D4161A2CDD3CD3006F4835 /* ComponentDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D416192CDD3CD3006F4835 /* ComponentDetailView.swift */; };
 		75D4161C2CDD8043006F4835 /* TextDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D4161B2CDD8043006F4835 /* TextDetailView.swift */; };
@@ -29,6 +38,15 @@
 		7506B0C72CD55174005ED4A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7506B0CF2CD551C4005ED4A5 /* Component.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		7506B0D12CD55297005ED4A5 /* ListModelStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModelStore.swift; sourceTree = "<group>"; };
+		7520DDAF2CE2E3840044D77A /* MenuDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDetailView.swift; sourceTree = "<group>"; };
+		7520DDB12CE2F6360044D77A /* PickerDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerDetailView.swift; sourceTree = "<group>"; };
+		7520DDB32CE309BA0044D77A /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		7550F2CB2CE3C7A20035EEE5 /* InputsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputsDetailView.swift; sourceTree = "<group>"; };
+		7550F2CE2CE3C90C0035EEE5 /* ButtonWithLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithLabel.swift; sourceTree = "<group>"; };
+		7550F2D22CE3CE620035EEE5 /* CustomToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomToolbar.swift; sourceTree = "<group>"; };
+		7550F2D42CE3D74C0035EEE5 /* ProgressViewDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewDetailView.swift; sourceTree = "<group>"; };
+		7550F2D82CE42B3B0035EEE5 /* StackDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackDetailView.swift; sourceTree = "<group>"; };
+		7550F2DA2CE433DE0035EEE5 /* CodeSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeSheet.swift; sourceTree = "<group>"; };
 		75D416152CDAA20B006F4835 /* ComponentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentListViewModel.swift; sourceTree = "<group>"; };
 		75D416192CDD3CD3006F4835 /* ComponentDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDetailView.swift; sourceTree = "<group>"; };
 		75D4161B2CDD8043006F4835 /* TextDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetailView.swift; sourceTree = "<group>"; };
@@ -95,14 +113,47 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		7550F2CD2CE3C8E90035EEE5 /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
+				7520DDB32CE309BA0044D77A /* HeaderView.swift */,
+				7550F2CE2CE3C90C0035EEE5 /* ButtonWithLabel.swift */,
+				7550F2D22CE3CE620035EEE5 /* CustomToolbar.swift */,
+				7550F2DA2CE433DE0035EEE5 /* CodeSheet.swift */,
+			);
+			path = HelperViews;
+			sourceTree = "<group>";
+		};
+		7550F2D62CE42AF50035EEE5 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				75D416232CDDBF13006F4835 /* ImageDetailView.swift */,
+				75D416252CDE9CEB006F4835 /* ButtonDetailView.swift */,
+				7520DDAF2CE2E3840044D77A /* MenuDetailView.swift */,
+				7520DDB12CE2F6360044D77A /* PickerDetailView.swift */,
+				7550F2CB2CE3C7A20035EEE5 /* InputsDetailView.swift */,
+				7550F2D42CE3D74C0035EEE5 /* ProgressViewDetailView.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		7550F2D72CE42B260035EEE5 /* ContainerViews */ = {
+			isa = PBXGroup;
+			children = (
+				7550F2D82CE42B3B0035EEE5 /* StackDetailView.swift */,
+			);
+			path = ContainerViews;
+			sourceTree = "<group>";
+		};
 		75D416142CDAA1C3006F4835 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7550F2D72CE42B260035EEE5 /* ContainerViews */,
+				7550F2D62CE42AF50035EEE5 /* Controls */,
+				7550F2CD2CE3C8E90035EEE5 /* HelperViews */,
 				75D416152CDAA20B006F4835 /* ComponentListViewModel.swift */,
 				75D416192CDD3CD3006F4835 /* ComponentDetailView.swift */,
 				75D4161B2CDD8043006F4835 /* TextDetailView.swift */,
-				75D416232CDDBF13006F4835 /* ImageDetailView.swift */,
-				75D416252CDE9CEB006F4835 /* ButtonDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,14 +230,23 @@
 			files = (
 				7506B0D02CD551C4005ED4A5 /* Component.swift in Sources */,
 				7506B0D22CD55297005ED4A5 /* ListModelStore.swift in Sources */,
+				7550F2CF2CE3C90C0035EEE5 /* ButtonWithLabel.swift in Sources */,
 				7506B0C32CD55174005ED4A5 /* ComponentContentView.swift in Sources */,
 				75D416162CDAA20B006F4835 /* ComponentListViewModel.swift in Sources */,
 				7506B0C12CD55174005ED4A5 /* Assignment1_Irina_IgnatenokApp.swift in Sources */,
 				75D416262CDE9CEB006F4835 /* ButtonDetailView.swift in Sources */,
 				75D4161A2CDD3CD3006F4835 /* ComponentDetailView.swift in Sources */,
+				7520DDB02CE2E3840044D77A /* MenuDetailView.swift in Sources */,
 				75D4161C2CDD8043006F4835 /* TextDetailView.swift in Sources */,
+				7550F2D92CE42B3B0035EEE5 /* StackDetailView.swift in Sources */,
+				7550F2D52CE3D74C0035EEE5 /* ProgressViewDetailView.swift in Sources */,
+				7520DDB22CE2F6360044D77A /* PickerDetailView.swift in Sources */,
+				7550F2CC2CE3C7A20035EEE5 /* InputsDetailView.swift in Sources */,
+				7550F2D32CE3CE620035EEE5 /* CustomToolbar.swift in Sources */,
 				75D416222CDD95A1006F4835 /* SFSafariView.swift in Sources */,
 				75D416242CDDBF13006F4835 /* ImageDetailView.swift in Sources */,
+				7520DDB42CE309BA0044D77A /* HeaderView.swift in Sources */,
+				7550F2DB2CE433DE0035EEE5 /* CodeSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

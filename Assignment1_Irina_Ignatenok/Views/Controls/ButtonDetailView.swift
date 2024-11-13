@@ -21,18 +21,8 @@ struct ButtonDetailView: View {
     var body: some View {
         NavigationStack {
             List {
-                HStack {
-                    Text("Button")
-                        .font(.headline)
-                    Spacer()
-                    Button(action: {
-                        showingCode.toggle()
-                    }) {
-                        Image(systemName: "curlybraces")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(.accentColor)
-                    }
+                ButtonWithLabel(label: "Button") {
+                    showingCode.toggle()
                 }
                 
                 HStack {
@@ -103,25 +93,7 @@ struct ButtonDetailView: View {
         }
         
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Spacer()
-            }
-            ToolbarItem(placement: .principal) {
-                Text(component.name)
-                    .font(.headline)
-                    .frame(maxWidth: .infinity, alignment: .center)
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                Button(action: {
-                    isPresented.toggle()
-//                   
-                }) {
-                    Image(systemName: "book")
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundColor(.accentColor)
-                }
-            }
+            CustomToolbar(title: component.name, isPresented: $isPresented)
         }
         .sheet(isPresented: $isShown) {
             SFSafariView(url:URL(string:
@@ -136,66 +108,10 @@ struct ButtonDetailView: View {
                             component.documentationURL)!)
         }
         .sheet(isPresented: $showingCode) {
-            NavigationStack {
-                List {
-                    HStack {
-                        Text(component.exampleCode)
-                            .font(.subheadline)
-                            .frame(maxWidth: 250, alignment: .leading)
-                            .multilineTextAlignment(.leading)
-                        
-                        Spacer()
-                        Button(action: {
-                            copyToClipboard(component.exampleCode)
-                            toggleTextColor()
-                            updateCopyButtonText()
-                        }) {
-                            Text(copyButtonText)
-                                .foregroundColor(textColor)
-                        }
-                        .padding(.bottom)
-                    }
-                    
-                }
-                .navigationTitle(component.name)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Spacer()
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button(action: {
-                            showingCode.toggle()
-                        }) {
-                            Label("Close", systemImage: "xmark")
-                        }
-                    }
-                }
-            }
+    CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
         }
     }
-    
 
-    // Function to return the appropriate button style
-  
-
-    // Copy code function
-    private func copyToClipboard(_ text: String) {
-        UIPasteboard.general.string = text
-    }
-
-    // Toggle color text after being tapped
-    private func toggleTextColor() {
-        textColor = (textColor == .accentColor) ? .red : .accentColor
-    }
-
-    // Change button text to "Copied"
-    private func updateCopyButtonText() {
-        copyButtonText = "Copied"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            copyButtonText = "Copy"
-            toggleTextColor()
-        }
-    }
 }
 
 struct ButtonDetailView_Previews: PreviewProvider {

@@ -41,8 +41,68 @@ extension ListModelStore {
                       .buttonStyle(.bordered)
                       .controlSize(.regular)}
                       """),
-            Component(name: "Value Inputs", iconName: "button.horizontal", category: "Controls", documentationURL: "https://developer.apple.com/documentation/swiftui/button", exampleCode: "Button(\"Press Me\") {}"),
-            Component(name: "Menu", iconName: "ellipsis.circle", category: "Controls", documentationURL: "https://developer.apple.com/documentation/swiftui/menu", exampleCode: "Menu { /* actions */ } label: { Text(\"Options\") }"),
+            Component(name: "Value Inputs", iconName: "button.horizontal", category: "Controls", documentationURL: "https://developer.apple.com/documentation/swiftui/slider", exampleCode:
+                        """
+                             Stepper(value: $count, in: 0...5)
+                                 .padding()
+                     """),
+            Component(name: "Menu", iconName: "ellipsis.circle", category: "Controls", documentationURL: "https://developer.apple.com/documentation/swiftui/menu", exampleCode:
+                        """
+                        Menu("Show Menu with Control Group") {
+                            ControlGroup {
+                                Button(action: {
+                                    // Code for pin action
+                                }) {
+                                    Image(systemName: "pin.fill")
+                                }
+                                
+                                Button(action: {
+                                    // Code for lock action
+                                }) {
+                                    Image(systemName: "lock")
+                                }
+                                
+                                Button(action: {
+                                    // Code for magnifying glass action
+                                }) {
+                                    Image(systemName: "magnifyingglass")
+                                }
+                            }
+                            
+                            Section {
+                                Button(action: {
+                                    // Code for Move File action
+                                }) {
+                                    Label("Move File", systemImage: "folder")
+                                }
+                                
+                                Button(action: {
+                                    // Code for New Folder action
+                                }) {
+                                    Label("New Folder", systemImage: "folder.badge.plus")
+                                }
+                            }
+                        }
+"""),
+            Component(name: "Picker", iconName: "calendar", category: "Controls", documentationURL: "https://developer.apple.com/documentation/swiftui/picker", exampleCode:
+                        """
+                    Picker("Flavor", selection: $selectedFlavor) {
+                        ForEach(Flavor.allCases) { flavor in
+                            Text(flavor.rawValue.capitalized)
+                        }
+                    }
+"""),
+            Component(name: "Progress View", iconName: "clock", category: "Controls", documentationURL: "https://developer.apple.com/documentation/swiftui/progressVIew", exampleCode:
+                        """
+                        VStack {
+                            ProgressView(value: progress)
+                            Button("More") { progress += 0.05 }
+                        }
+"""),
+            Component(name: "Stack", iconName: "square.stack.3d.up", category: "Container Views", documentationURL: "https://developer.apple.com/documentation/swiftui/vstack", exampleCode:
+                        """
+                       
+"""),
         
         ]
         return ListModelStore(lists: items)

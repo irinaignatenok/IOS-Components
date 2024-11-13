@@ -40,41 +40,7 @@ struct ProgressViewDetailView: View {
                                 component.documentationURL)!)
             }
             .sheet(isPresented: $showingCode) {
-                NavigationStack {
-                    List {
-                        HStack {
-                            Text(component.exampleCode)
-                                .font(.subheadline)
-                                .frame(maxWidth: 250, alignment: .leading)
-                                .multilineTextAlignment(.leading)
-                            
-                            Spacer()
-                            Button(action: {
-                                viewModel.copyToClipboard(component.exampleCode)
-                                viewModel.toggleTextColor()
-                                viewModel.updateCopyButtonText()
-                            }) {
-                                Text(viewModel.copyButtonText)
-                                    .foregroundColor(viewModel.textColor)
-                            }
-                            .padding(.bottom)
-                        }
-                        
-                    }
-                    .navigationTitle(component.name)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Spacer()
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                showingCode.toggle()
-                            }) {
-                                Label("Close", systemImage: "xmark")
-                            }
-                        }
-                    }
-                }
+                CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
             }
         
     }

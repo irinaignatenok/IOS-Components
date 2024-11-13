@@ -1,13 +1,8 @@
-//
-//  PickerDetailView.swift
-//  Assignment1_Irina_Ignatenok
-//
-//  Created by Irina Ignatenok on 2024-11-11.
-//
-
 import SwiftUI
+import SafariServices
 
-enum Flavor: String, CaseIterable, Identifiable {
+// Rename to avoid conflicts
+enum IceCreamFlavor: String, CaseIterable, Identifiable {
     case chocolate, vanilla, strawberry
     var id: Self { self }
 }
@@ -15,25 +10,26 @@ enum Flavor: String, CaseIterable, Identifiable {
 struct PickerDetailView: View {
     let component: Component
     var viewModel: ComponentListViewModel
-    @State var date = Date()
+    @State private var date = Date()
+    
+    // Define the date range safely
     let dateRange: ClosedRange<Date> = {
         let calendar = Calendar.current
-        let startComponents = DateComponents(year: 2024, month: 11, day: 1)
-        let endComponents = DateComponents(year: 2024, month: 11, day: 30, hour: 23, minute: 59, second: 59)
-        return calendar.date(from:startComponents)!
-            ...
-            calendar.date(from:endComponents)!
+        let start = calendar.date(from: DateComponents(year: 2024, month: 11, day: 1))!
+        let end = calendar.date(from: DateComponents(year: 2024, month: 11, day: 30, hour: 23, minute: 59, second: 59))!
+        return start...end
     }()
-    @State private var bgColor = Color(.sRGB, red: 0.98, green: 0.9, blue: 0.2)
-    @State private var selectedFlavor: Flavor = .chocolate
+    
+    @State private var bgColor = Color(red: 0.98, green: 0.9, blue: 0.2)
+    @State private var selectedFlavor: IceCreamFlavor = .chocolate
     @State private var showingCode = false
-@State private var isShown = false
+    @State private var isShown = false
     @State private var isPresented = false
     @State private var isDocumentation = false
-    var body: some View {
-        NavigationStack{
-            List{
     
+    var body: some View {
+        NavigationStack {
+            List {
                 HStack {
                     Text("Picker")
                         .font(.headline)
@@ -47,114 +43,76 @@ struct PickerDetailView: View {
                             .foregroundColor(.accentColor)
                     }
                 }
-                Section("Default Picker"){
+                
+                Section("Default Picker") {
                     Picker("Flavor", selection: $selectedFlavor) {
-                        ForEach(Flavor.allCases) { flavor in
+                        ForEach(IceCreamFlavor.allCases) { flavor in
                             Text(flavor.rawValue.capitalized)
                         }
                     }
                 }
-                Section("Wheel"){
+                
+                Section("Wheel Picker") {
                     Picker("Flavor", selection: $selectedFlavor) {
-                        ForEach(Flavor.allCases) { flavor in
+                        ForEach(IceCreamFlavor.allCases) { flavor in
                             Text(flavor.rawValue.capitalized)
                         }
                     }
                     .pickerStyle(.wheel)
                 }
-                Section("Segmented"){
+                
+                Section("Segmented Picker") {
                     Picker("Flavor", selection: $selectedFlavor) {
-                        ForEach(Flavor.allCases) { flavor in
+                        ForEach(IceCreamFlavor.allCases) { flavor in
                             Text(flavor.rawValue.capitalized)
                         }
                     }
-                    .pickerStyle(.palette)
+                    .pickerStyle(.segmented)
                     .padding()
                 }
+                
                 HeaderView(title: "Date Picker", isShown: $isShown)
-              
-                Section("Date Picker"){
+                Section("Date Picker") {
                     DatePicker("Date Picker", selection: $date, displayedComponents: [.date])
                         .padding()
                 }
-                Section("Ranged Date Picker"){
+                
+                Section("Ranged Date Picker") {
                     DatePicker("Date", selection: $date, in: dateRange, displayedComponents: [.date, .hourAndMinute])
                         .padding()
                 }
-                Section("Wheel Date Picker"){
+                
+                Section("Wheel Date Picker") {
                     DatePicker("Wheel", selection: $date, displayedComponents: [.date])
                         .datePickerStyle(WheelDatePickerStyle())
                         .padding()
                 }
+                
                 HeaderView(title: "Color Picker", isShown: $isDocumentation)
                 ColorPicker("Color", selection: $bgColor)
                     .padding()
             }
-            .toolbar{
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Spacer()
-                }
-                ToolbarItem(placement: .principal) {
-                    Text(component.name)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        isPresented.toggle()
-                    }) {
-                        Image(systemName: "book")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(.accentColor)
-                    }
-                }
+            .navigationTitle(component.name)
+            .toolbar {
+                CustomToolbar(title: component.name, isPresented: $isPresented)
             }
             .sheet(isPresented: $isPresented) {
-                SFSafariView(url: URL(string: component.documentationURL)!)
+                if let url = URL(string: component.documentationURL) {
+                    SFSafariView(url: url)
+                }
             }
             .sheet(isPresented: $isShown) {
-                SFSafariView(url: URL(string: "https://developer.apple.com/documentation/swiftui/datepicker")!)
+                if let url = URL(string: "https://developer.apple.com/documentation/swiftui/datepicker") {
+                    SFSafariView(url: url)
+                }
             }
             .sheet(isPresented: $isDocumentation) {
-                SFSafariView(url: URL(string: "https://developer.apple.com/documentation/swiftui/colorpicker")!)
-            }
-           
-            .sheet(isPresented: $showingCode) {
-                NavigationStack {
-                    List {
-                        HStack {
-                            Text(component.exampleCode)
-                                .font(.subheadline)
-                                .frame(maxWidth: 250, alignment: .leading)
-                                .multilineTextAlignment(.leading)
-                            
-                            Spacer()
-                            Button(action: {
-                                viewModel.copyToClipboard(component.exampleCode)
-                                viewModel.toggleTextColor()
-                                viewModel.updateCopyButtonText()
-                            }) {
-                                Text(viewModel.copyButtonText)
-                                    .foregroundColor(viewModel.textColor)
-                            }
-                            .padding(.bottom)
-                        }
-                    }
-                    .navigationTitle(component.name)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Spacer()
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                showingCode.toggle()
-                            }) {
-                                Label("Close", systemImage: "xmark")
-                            }
-                        }
-                    }
+                if let url = URL(string: "https://developer.apple.com/documentation/swiftui/colorpicker") {
+                    SFSafariView(url: url)
                 }
+            }
+            .sheet(isPresented: $showingCode) {
+                CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
             }
         }
     }
@@ -163,11 +121,11 @@ struct PickerDetailView: View {
 struct PickerDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let mockComponent = Component(
-            name: "Text",
-            iconName: "textformat",
-            category: "Text Input/Output",
-            documentationURL: "https://developer.apple.com/documentation/swiftui/text",
-            exampleCode: "Text(\"Hello, World!\")"
+            name: "Picker",
+            iconName: "chevron.right",
+            category: "Pickers",
+            documentationURL: "https://developer.apple.com/documentation/swiftui/picker",
+            exampleCode: "Picker(\"Select a flavor\", selection: $selectedFlavor)"
         )
         
         let viewModel = ComponentListViewModel()

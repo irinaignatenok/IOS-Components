@@ -4,15 +4,30 @@
 //
 //  Created by Irina Ignatenok on 2024-11-12.
 //
-
 import SwiftUI
 
 struct CustomToolbar: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+    var title: String
+    @Binding var isPresented: Bool
 
-#Preview {
-    CustomToolbar()
+    var body: some View {
+        HStack {   
+            Text(title)
+                .font(.headline)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            
+          
+            Button(action: {
+                isPresented.toggle()
+            }) {
+                Image(systemName: "book")
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundColor(.accentColor)
+            }
+            .frame(alignment: .trailing)
+            Spacer()
+        }
+        .padding()
+    }
 }

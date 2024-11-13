@@ -69,8 +69,17 @@ struct RenderedItemsView: View {
             
            case "Button":
                ButtonDetailView(component: item, viewModel: ComponentListViewModel())
-//           case "Menu":
-////               MenuDetailView(component: item) // Define this view separately
+           case "Menu":
+               MenuDetailView(component: item, viewModel: ComponentListViewModel())
+           case "Picker":
+               PickerDetailView(component: item, viewModel: ComponentListViewModel())
+           case "Value Inputs":
+               InputsDetailView(component: item, viewModel: ComponentListViewModel())
+           case "Progress View":
+               ProgressViewDetailView(component: item, viewModel: ComponentListViewModel())
+           case "Stack":
+               StackDetailView(component: item, viewModel: ComponentListViewModel())
+
 //           default:
 //               DefaultDetailView(component: item) // Fallback view
            default:

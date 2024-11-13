@@ -16,24 +16,15 @@ struct MenuDetailView: View {
     @State private var selectedAction: String = ""
     
     let component: Component
+    var viewModel: ComponentListViewModel
     
     var body: some View {
         NavigationStack {
             List {
-                HStack {
-                    Text("Menu")
-                        .font(.headline)
-                    Spacer()
-                    Button(action: {
-                        showingCode.toggle()
-                    }) {
-                        Image(systemName: "curlybraces")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(.accentColor)
-                    }
+                ButtonWithLabel(label: "Menu") {
+                    showingCode.toggle()
                 }
-
+           
                 // First Menu Section
                 VStack {
                     HStack {
@@ -118,92 +109,24 @@ struct MenuDetailView: View {
 
             } // End of List
             .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Spacer()
-                }
-                ToolbarItem(placement: .principal) {
-                    Text(component.name)
-                        .font(.headline)
-                        .frame(maxWidth: .infinity, alignment: .center)
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        isPresented.toggle()
-                    }) {
-                        Image(systemName: "book")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                            .foregroundColor(.accentColor)
-                    }
-                }
+                CustomToolbar(title: component.name, isPresented: $isPresented)
             }
             .sheet(isPresented: $isPresented) {
                 SFSafariView(url: URL(string: component.documentationURL)!)
             }
             .sheet(isPresented: $showingCode) {
-                NavigationStack {
-                    List {
-                        HStack {
-                            Text(component.exampleCode)
-                                .font(.subheadline)
-                                .frame(maxWidth: 250, alignment: .leading)
-                                .multilineTextAlignment(.leading)
-                            
-                            Spacer()
-                            Button(action: {
-                                copyToClipboard(component.exampleCode)
-                                toggleTextColor()
-                                updateCopyButtonText()
-                            }) {
-                                Text(copyButtonText)
-                                    .foregroundColor(textColor)
-                            }
-                            .padding(.bottom)
-                        }
-                    }
-                    .navigationTitle(component.name)
-                    .toolbar {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            Spacer()
-                        }
-                        ToolbarItem(placement: .navigationBarTrailing) {
-                            Button(action: {
-                                showingCode.toggle()
-                            }) {
-                                Label("Close", systemImage: "xmark")
-                            }
-                        }
-                    }
-                }
+       CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
             }
         }
     }
-    
-    // Copy code function
-    private func copyToClipboard(_ text: String) {
-        UIPasteboard.general.string = text
-    }
 
-    // Toggle color text after being tapped
-    private func toggleTextColor() {
-        textColor = (textColor == .accentColor) ? .red : .accentColor
-    }
-
-    // Change button text to "Copied"
-    private func updateCopyButtonText() {
-        copyButtonText = "Copied"
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            copyButtonText = "Copy"
-            toggleTextColor()
-        }
-    }
 }
 
 // Preview struct (if needed)
 struct MenuDetailView_Previews: PreviewProvider {
     static var previews: some View {
         let sampleComponent = Component(id: UUID(), name: "Sample Component", iconName: "home", category: "controls", documentationURL: "https://example.com/docs", exampleCode: "let x = 10")
-        MenuDetailView(component: sampleComponent)
+        MenuDetailView(component: sampleComponent, viewModel: ComponentListViewModel())
             .previewDisplayName("Menu Detail Page Preview")
     }
 }
