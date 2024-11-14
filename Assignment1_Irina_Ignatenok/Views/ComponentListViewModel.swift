@@ -30,6 +30,13 @@ final class ComponentListViewModel{
         self.navTitle = navTitle
     }
     
+//    filter function
+    func filterSearchResult(){
+        searchResults = store.items.filter({
+            $0.name.localizedCaseInsensitiveContains(searchTerm)
+        })
+    }
+    
     // Copy code function
         func copyToClipboard(_ text: String) {
             UIPasteboard.general.string = text

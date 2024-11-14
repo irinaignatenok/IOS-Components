@@ -22,18 +22,14 @@ extension ListModelStore {
     static var mockData: ListModelStore  {
         let items = [
             Component(name: "Text", iconName: "textformat", category: "Text Input/Output", documentationURL: "https://developer.apple.com/documentation/swiftui/text", exampleCode: "Text(\"Hello, Worldccccc!\")"),
-            Component(name: "Label", iconName: "note.text", category: "Text Input/Output", documentationURL: "https://developer.apple.com/documentation/swiftui/label", exampleCode: "Text(\"Hello, Worldvvv!\")"),
-            Component(name: "TextField", iconName: "text.bubble", category: "Text Input/Output", documentationURL: "https://developer.apple.com/documentation/swiftui/textfield", exampleCode: "Text(\"Hello, Worldbbb!\")"),
-            Component(name: "TextArea", iconName: "text.quote", category: "Text Input/Output", documentationURL: "https://developer.apple.com/documentation/swiftui/textfield", exampleCode: "Text(\"Hello, Worldnnn!\")"),
-            Component(name: "SecureField", iconName: "ellipsis.rectangle", category: "Text Input/Output", documentationURL: "https://developer.apple.com/documentation/swiftui/SecureField", exampleCode: "Text(\"Hello, Worldmmm!\")"),
-            Component(name: "Image", iconName: "photo", category: "Text Input/Output", documentationURL: "https://developer.apple.com/documentation/swiftui/image", exampleCode: 
-               """
+            Component(name: "Image", iconName: "photo", category: "Text Input/Output", documentationURL: "https://developer.apple.com/documentation/swiftui/image", exampleCode:
+                        """
                         Image("Mojave Day")
                             .resizable()
                             .aspectRatio(2.0, contentMode: .fill)
                         """),
-           
-        
+            
+            
             Component(name: "Button", iconName: "button.horizontal", category: "Controls", documentationURL: "https://developer.apple.com/documentation/swiftui/button", exampleCode:
                         """
                       Button(action:{//code})
@@ -140,10 +136,34 @@ extension ListModelStore {
                                      .navigationTitle("Colleges")
                                  }
 """),
-        
+            Component(name: "Alert", iconName: "note.text", category: "Container Views", documentationURL: "https://developer.apple.com/design/human-interface-guidelines/alerts", exampleCode:
+                        """
+                                       .alert("Alert Title", isPresented: $isPresented) {
+                                           Button("Cancel", role: .cancel) {
+                                               isPresented = false
+                                           }
+"""),
+            Component(name: "Sheets", iconName: "square.stack", category: "Container Views", documentationURL: "https://developer.apple.com/design/human-interface-guidelines/sheets", exampleCode:
+                        """
+                                               .sheet(isPresented: $isPresented, content: {
+                                                   VStack {
+                                                       Text("Sheet is Presented")
+                   .font(.title)
+}}
+"""),
+            Component(name: "Lists View", iconName: "list.bullet", category: "List", documentationURL: "https://developer.apple.com/documentation/swiftui/list", exampleCode:
+                        """
+ 
+                      List {
+                      Text("A List Item")
+                      Text("A Second List Item")
+                      Text("A Third List Item")
+                  }
+"""),
+            
         ]
         return ListModelStore(lists: items)
     }
-        
+    
 }
 

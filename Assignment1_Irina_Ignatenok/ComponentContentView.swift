@@ -30,6 +30,12 @@ struct ComponentContentView: View {
 
                 }
             .navigationTitle(viewModel.navTitle)
+            .searchable(text: $viewModel.searchTerm,
+            placement:
+                    .navigationBarDrawer(displayMode: .automatic), prompt: "Search for Component")
+            .onChange(of: viewModel.searchTerm) {
+                viewModel.filterSearchResult()
+            }
            
         }
     }
@@ -83,6 +89,13 @@ struct RenderedItemsView: View {
                FormDetailView(component: item, viewModel: ComponentListViewModel())
            case "Navigation Link":
                NavigationStackDetailView(component: item)
+           case "Alert":
+               AlertDetailView(component: item, viewModel: ComponentListViewModel())
+           case "Sheets":
+               SheetDetailView(component: item, viewModel: ComponentListViewModel())
+           case "Lists View":
+               ListDetailView(component: item, viewModel: ComponentListViewModel())
+               
 
 //           default:
 //               DefaultDetailView(component: item) // Fallback view

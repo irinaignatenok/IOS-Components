@@ -30,6 +30,9 @@
 		75D416222CDD95A1006F4835 /* SFSafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D416212CDD95A1006F4835 /* SFSafariView.swift */; };
 		75D416242CDDBF13006F4835 /* ImageDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D416232CDDBF13006F4835 /* ImageDetailView.swift */; };
 		75D416262CDE9CEB006F4835 /* ButtonDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75D416252CDE9CEB006F4835 /* ButtonDetailView.swift */; };
+		75E2DDB22CE505CD00A060AD /* AlertDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2DDB12CE505CD00A060AD /* AlertDetailView.swift */; };
+		75E2DDB42CE50AA300A060AD /* SheetDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2DDB32CE50AA300A060AD /* SheetDetailView.swift */; };
+		75E2DDB72CE5118800A060AD /* ListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E2DDB62CE5118800A060AD /* ListDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		75D416212CDD95A1006F4835 /* SFSafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariView.swift; sourceTree = "<group>"; };
 		75D416232CDDBF13006F4835 /* ImageDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDetailView.swift; sourceTree = "<group>"; };
 		75D416252CDE9CEB006F4835 /* ButtonDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDetailView.swift; sourceTree = "<group>"; };
+		75E2DDB12CE505CD00A060AD /* AlertDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDetailView.swift; sourceTree = "<group>"; };
+		75E2DDB32CE50AA300A060AD /* SheetDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetDetailView.swift; sourceTree = "<group>"; };
+		75E2DDB62CE5118800A060AD /* ListDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,8 @@
 				7550F2DF2CE466790035EEE5 /* NavigationStackDetailView.swift */,
 				7550F2D82CE42B3B0035EEE5 /* StackDetailView.swift */,
 				7550F2DC2CE460800035EEE5 /* FormDetailView.swift */,
+				75E2DDB12CE505CD00A060AD /* AlertDetailView.swift */,
+				75E2DDB32CE50AA300A060AD /* SheetDetailView.swift */,
 			);
 			path = ContainerViews;
 			sourceTree = "<group>";
@@ -154,6 +162,7 @@
 		75D416142CDAA1C3006F4835 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				75E2DDB52CE5117400A060AD /* Lists */,
 				7550F2D72CE42B260035EEE5 /* ContainerViews */,
 				7550F2D62CE42AF50035EEE5 /* Controls */,
 				7550F2CD2CE3C8E90035EEE5 /* HelperViews */,
@@ -162,6 +171,14 @@
 				75D4161B2CDD8043006F4835 /* TextDetailView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		75E2DDB52CE5117400A060AD /* Lists */ = {
+			isa = PBXGroup;
+			children = (
+				75E2DDB62CE5118800A060AD /* ListDetailView.swift */,
+			);
+			path = Lists;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,6 +260,7 @@
 				7550F2DD2CE460800035EEE5 /* FormDetailView.swift in Sources */,
 				7506B0C12CD55174005ED4A5 /* Assignment1_Irina_IgnatenokApp.swift in Sources */,
 				75D416262CDE9CEB006F4835 /* ButtonDetailView.swift in Sources */,
+				75E2DDB72CE5118800A060AD /* ListDetailView.swift in Sources */,
 				75D4161A2CDD3CD3006F4835 /* ComponentDetailView.swift in Sources */,
 				7520DDB02CE2E3840044D77A /* MenuDetailView.swift in Sources */,
 				75D4161C2CDD8043006F4835 /* TextDetailView.swift in Sources */,
@@ -250,9 +268,11 @@
 				7550F2D52CE3D74C0035EEE5 /* ProgressViewDetailView.swift in Sources */,
 				7520DDB22CE2F6360044D77A /* PickerDetailView.swift in Sources */,
 				7550F2CC2CE3C7A20035EEE5 /* InputsDetailView.swift in Sources */,
+				75E2DDB22CE505CD00A060AD /* AlertDetailView.swift in Sources */,
 				7550F2D32CE3CE620035EEE5 /* CustomToolbar.swift in Sources */,
 				75D416222CDD95A1006F4835 /* SFSafariView.swift in Sources */,
 				75D416242CDDBF13006F4835 /* ImageDetailView.swift in Sources */,
+				75E2DDB42CE50AA300A060AD /* SheetDetailView.swift in Sources */,
 				7520DDB42CE309BA0044D77A /* HeaderView.swift in Sources */,
 				7550F2DB2CE433DE0035EEE5 /* CodeSheet.swift in Sources */,
 			);

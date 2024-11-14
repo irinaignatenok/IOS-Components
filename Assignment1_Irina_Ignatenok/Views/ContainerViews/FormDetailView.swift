@@ -62,6 +62,7 @@ struct FormDetailView: View {
         .sheet(isPresented: $isPresented) {
             SFSafariView(url: URL(string: component.documentationURL)!)
         }
+        
       
     }
 }
