@@ -9,47 +9,47 @@ struct ImageDetailView: View {
     @State private var textColor: Color = .accentColor
     @State private var copyButtonText: String = "Copy"
     @State private var isToggled: Bool = false
-
+    
     var body: some View {
         NavigationStack {
             List {
                 ButtonWithLabel(label: "Image") {
                     showingCode.toggle()
                 }
-                    HStack {
-                        Image(systemName: "photo")
-                            .foregroundColor(.accentColor)
-                            .padding(.trailing, 8)
-                        Toggle("Content Mode", isOn: $isToggled)
-                            .toggleStyle(SwitchToggleStyle(tint: .blue))
-                            
-                    }
+                HStack {
+                    Image(systemName: "photo")
+                        .foregroundColor(.accentColor)
+                        .padding(.trailing, 8)
+                    Toggle("Content Mode", isOn: $isToggled)
+                        .toggleStyle(SwitchToggleStyle(tint: .blue))
                     
-                    VStack(alignment: .leading) {
-                        Image("1024")
-                            .resizable()
-                            .aspectRatio(contentMode: isToggled ? .fit : .fill)
-    //
-                            .frame(height: 200)
-                            .clipped()
-                    }
                 }
-               
-//            Nav Bar
+                
+                VStack(alignment: .leading) {
+                    Image("1024")
+                        .resizable()
+                        .aspectRatio(contentMode: isToggled ? .fit : .fill)
+                    //
+                        .frame(height: 200)
+                        .clipped()
+                }
+            }
+            
+            //            Nav Bar
             .toolbar {
                 CustomToolbar(title: component.name, isPresented: $isPresented)
             }
-//            This sheet presents the code for the image
+            //            This sheet presents the code for the image
             .sheet(isPresented: $showingCode) {
-           CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
+                CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
             }
-//            Sheet presents the documentation
+            //            Sheet presents the documentation
             .sheet(isPresented: $isPresented) {
                 SFSafariView(url: URL(string: component.documentationURL)!)
             }
         }
     }
-
+    
 }
 
 // Preview setup

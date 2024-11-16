@@ -18,7 +18,7 @@ final class ComponentListViewModel{
     
     // Properties for clipboard functionality
     var textColor: Color = .accentColor
-        var copyButtonText: String = "Copy"
+    var copyButtonText: String = "Copy"
     
     //    Computed Properties
     var listData:[Component] {
@@ -30,7 +30,7 @@ final class ComponentListViewModel{
         self.navTitle = navTitle
     }
     
-//    filter function
+    //    filter function
     func filterSearchResult(){
         searchResults = store.items.filter({
             $0.name.localizedCaseInsensitiveContains(searchTerm)
@@ -38,22 +38,22 @@ final class ComponentListViewModel{
     }
     
     // Copy code function
-        func copyToClipboard(_ text: String) {
-            UIPasteboard.general.string = text
-            updateCopyButtonText()
+    func copyToClipboard(_ text: String) {
+        UIPasteboard.general.string = text
+        updateCopyButtonText()
+    }
+    
+    // Toggle color text after being tapped
+    func toggleTextColor() {
+        textColor = (textColor == .accentColor) ? .red : .accentColor
+    }
+    
+    // Change button text to "Copied"
+    func updateCopyButtonText() {
+        copyButtonText = "Copied"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.copyButtonText = "Copy"
+            self.toggleTextColor()
         }
-
-        // Toggle color text after being tapped
-        func toggleTextColor() {
-            textColor = (textColor == .accentColor) ? .red : .accentColor
-        }
-
-        // Change button text to "Copied"
-        func updateCopyButtonText() {
-            copyButtonText = "Copied"
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.copyButtonText = "Copy"
-                self.toggleTextColor()
-            }
-        }
+    }
 }

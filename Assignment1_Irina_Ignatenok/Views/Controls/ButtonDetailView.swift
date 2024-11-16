@@ -12,12 +12,12 @@ struct ButtonDetailView: View {
     @State private var isPresented = false
     @State private var isShown = false
     @State private var  isShownLink = false
-   
+    
     @State private var showingCode = false
     @State private var textColor: Color = .accentColor
     @State private var copyButtonText: String = "Copy"
     @State private var selectedStyle: ButtonStyleType = .bordered
-
+    
     var body: some View {
         NavigationStack {
             List {
@@ -39,10 +39,10 @@ struct ButtonDetailView: View {
                     .pickerStyle(MenuPickerStyle())
                     .padding()
                     
-                
-                  
+                    
+                    
                 }
-
+                
                 HStack{
                     if (selectedStyle == .plain){
                         Button("Button") {
@@ -61,7 +61,7 @@ struct ButtonDetailView: View {
                         .buttonStyle(.borderedProminent)
                     }else if (selectedStyle == .custom){
                         Button("Button", systemImage: "heart") {
-                          
+                            
                         }
                         .buttonStyle(.borderedProminent)
                         .foregroundStyle(.black)
@@ -77,17 +77,17 @@ struct ButtonDetailView: View {
                     }
                 }
                 HeaderView(title: "Link", isShown: $isShown)
-              
+                
                 HStack{
                     Link("Apple.com", destination: URL(string: "https://www.apple.com")!)
                         .padding()
                 }
                 HeaderView(title: "Share Link", isShown: $isShownLink)
-           
+                
                 HStack {
                     ShareLink(item: URL(string: "https://www.apple.com")!)
                 }
-               
+                
                 
             }
         }
@@ -97,21 +97,21 @@ struct ButtonDetailView: View {
         }
         .sheet(isPresented: $isShown) {
             SFSafariView(url:URL(string:
-                            "https://developer.apple.com/documentation/swiftui/link")!)
+                                    "https://developer.apple.com/documentation/swiftui/link")!)
         }
         .sheet(isPresented: $isShownLink) {
             SFSafariView(url:URL(string:
-                            "https://developer.apple.com/documentation/swiftui/sharelink")!)
+                                    "https://developer.apple.com/documentation/swiftui/sharelink")!)
         }
         .sheet(isPresented: $isPresented) {
             SFSafariView(url:URL(string:
-                            component.documentationURL)!)
+                                    component.documentationURL)!)
         }
         .sheet(isPresented: $showingCode) {
-    CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
+            CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
         }
     }
-
+    
 }
 
 struct ButtonDetailView_Previews: PreviewProvider {

@@ -5,7 +5,7 @@
 //  Created by Irina Ignatenok on 2024-11-12.
 //
 import SwiftUI
-
+//to present NavBar with text and Button
 struct CustomToolbar: View {
     var title: String
     @Binding var isPresented: Bool

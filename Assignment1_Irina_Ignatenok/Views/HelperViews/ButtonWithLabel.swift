@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+//helper struct to present Text with Icon 
 struct ButtonWithLabel: View {
     var label: String
     var action: () -> Void

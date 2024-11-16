@@ -27,7 +27,7 @@ struct FormDetailView: View {
     @State private var sendReadReceipts: Bool = false
     @State private var profileImageSize: ProfileImageSize = .medium
     @State private var isPresented: Bool = false
-  
+    
     var body: some View {
         NavigationView {
             Form {
@@ -53,17 +53,17 @@ struct FormDetailView: View {
                 }
             }
         }
-            .navigationTitle("")
-      
+        .navigationTitle("")
+        
         .toolbar {
             CustomToolbar(title: component.name, isPresented: $isPresented)
         }
-            
+        
         .sheet(isPresented: $isPresented) {
             SFSafariView(url: URL(string: component.documentationURL)!)
         }
         
-      
+        
     }
 }
 

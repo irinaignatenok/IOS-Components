@@ -14,24 +14,24 @@ struct AlertDetailView: View {
     @State private var  isPresented = false
     @State var isPresentedAlert: Bool = false
     @State var isPresentedMulti: Bool = false
-   
+    
     var body: some View {
         NavigationStack{
             List{
                 ButtonWithLabel(label: "Alert") {
                     showingCode.toggle()
                 }
-                    Button(action: {
-                        isPresented = true
-                    }, label: {
-                        Text("Show Alert")
-                    })
-
-                    Button(action: {
-                        isPresentedMulti = true
-                    }, label: {
-                        Text("Show Multi-Option Alert")
-                    })
+                Button(action: {
+                    isPresented = true
+                }, label: {
+                    Text("Show Alert")
+                })
+                
+                Button(action: {
+                    isPresentedMulti = true
+                }, label: {
+                    Text("Show Multi-Option Alert")
+                })
             }
             .alert("Alert Title", isPresented: $isPresented) {
                 Button("Cancel", role: .cancel) {

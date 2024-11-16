@@ -20,77 +20,77 @@ struct InputsDetailView: View {
     @State private var toggleState: Bool = false
     
     @State var count: Int = 0
-
-       var body: some View {
-           NavigationStack{
-               List{
-                   ButtonWithLabel(label: "Inputs") {
-                       showingCode.toggle()
-                   }
-                   HeaderView(title: "Slider View", isShown: $isShown)
-                   Section("Continuous Slider"){
-                       Text("Slider Value: \(volume)")
-                       
-                       Slider(value: $volume, in: 0...100) {
-                           Text("Volume")
-                       } minimumValueLabel: {
-                           Image(systemName: "speaker")
-                       } maximumValueLabel: {
-                           Image(systemName: "speaker.wave.3")
-                       }
-                       .padding()
-                   }
-                   Section("Stepped Slider"){
-                       Text("Slider Value: \(rating)")
-                       
-                       Slider(value: $rating, in: 0...10, step: 1) {
-                           Text("Rating")
-                       } minimumValueLabel: {
-                           Text("0")
-                       } maximumValueLabel: {
-                           Text("10")
-                       }
-                       .padding()
-                   }
-                   HeaderView(title: "Stepper", isShown: $isShownLink)
-                   HStack{
-                       Stepper(" \(count)", value: $count, in: 0...5)
-                           
-                   }.padding()
-                   
-                   HeaderView(title: "Toggle", isShown: $isShownToggle)
-                   HStack{
-                       Toggle("Switch", isOn: $toggleState)
-                           .padding()
-                   }
-               }
-           }
-           .navigationTitle("") 
-                    .toolbar {
-                        
-                        CustomToolbar(title: component.name, isPresented: $isPresented)
-                    }
-                    .sheet(isPresented: $isPresented) {
-                        SFSafariView(url:URL(string:
-                                        component.documentationURL)!)
-                    }
-                    .sheet(isPresented: $isShownLink) {
-                        SFSafariView(url:URL(string:
-                                        "https://developer.apple.com/documentation/swiftui/stepper")!)
-                    }
-                    .sheet(isPresented: $isShown) {
-                        SFSafariView(url:URL(string:
-                                        "https://developer.apple.com/documentation/swiftui/slider")!)
-                    }
-                    .sheet(isPresented: $isShownToggle) {
-                        SFSafariView(url:URL(string:
-                                        "https://developer.apple.com/documentation/swiftui/toggle")!)
-                    }
-                    .sheet(isPresented: $showingCode) {
-                        CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
-                    }
+    
+    var body: some View {
+        NavigationStack{
+            List{
+                ButtonWithLabel(label: "Inputs") {
+                    showingCode.toggle()
                 }
-       }
+                HeaderView(title: "Slider View", isShown: $isShown)
+                Section("Continuous Slider"){
+                    Text("Slider Value: \(volume)")
+                    
+                    Slider(value: $volume, in: 0...100) {
+                        Text("Volume")
+                    } minimumValueLabel: {
+                        Image(systemName: "speaker")
+                    } maximumValueLabel: {
+                        Image(systemName: "speaker.wave.3")
+                    }
+                    .padding()
+                }
+                Section("Stepped Slider"){
+                    Text("Slider Value: \(rating)")
+                    
+                    Slider(value: $rating, in: 0...10, step: 1) {
+                        Text("Rating")
+                    } minimumValueLabel: {
+                        Text("0")
+                    } maximumValueLabel: {
+                        Text("10")
+                    }
+                    .padding()
+                }
+                HeaderView(title: "Stepper", isShown: $isShownLink)
+                HStack{
+                    Stepper(" \(count)", value: $count, in: 0...5)
+                    
+                }.padding()
+                
+                HeaderView(title: "Toggle", isShown: $isShownToggle)
+                HStack{
+                    Toggle("Switch", isOn: $toggleState)
+                        .padding()
+                }
+            }
+        }
+        .navigationTitle("") 
+        .toolbar {
+            
+            CustomToolbar(title: component.name, isPresented: $isPresented)
+        }
+        .sheet(isPresented: $isPresented) {
+            SFSafariView(url:URL(string:
+                                    component.documentationURL)!)
+        }
+        .sheet(isPresented: $isShownLink) {
+            SFSafariView(url:URL(string:
+                                    "https://developer.apple.com/documentation/swiftui/stepper")!)
+        }
+        .sheet(isPresented: $isShown) {
+            SFSafariView(url:URL(string:
+                                    "https://developer.apple.com/documentation/swiftui/slider")!)
+        }
+        .sheet(isPresented: $isShownToggle) {
+            SFSafariView(url:URL(string:
+                                    "https://developer.apple.com/documentation/swiftui/toggle")!)
+        }
+        .sheet(isPresented: $showingCode) {
+            CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
+        }
+    }
+}
 
 
 struct InputDetailView_Previews: PreviewProvider {

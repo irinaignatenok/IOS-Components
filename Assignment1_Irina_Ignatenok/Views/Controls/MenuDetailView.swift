@@ -24,7 +24,7 @@ struct MenuDetailView: View {
                 ButtonWithLabel(label: "Menu") {
                     showingCode.toggle()
                 }
-           
+                
                 // First Menu Section
                 VStack {
                     HStack {
@@ -66,7 +66,7 @@ struct MenuDetailView: View {
                     }
                     .padding()
                 }
-
+                
                 // Second Menu Section
                 VStack {
                     HStack {
@@ -106,7 +106,7 @@ struct MenuDetailView: View {
                     }
                     .padding()
                 } // End of Second Menu Section
-
+                
             } // End of List
             .toolbar {
                 CustomToolbar(title: component.name, isPresented: $isPresented)
@@ -115,11 +115,11 @@ struct MenuDetailView: View {
                 SFSafariView(url: URL(string: component.documentationURL)!)
             }
             .sheet(isPresented: $showingCode) {
-       CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
+                CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
             }
         }
     }
-
+    
 }
 
 // Preview struct (if needed)

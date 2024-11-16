@@ -11,21 +11,21 @@ import SafariServices
 struct ComponentDetailView: View {
     let component: Component
     @State private var showingDocumentation = false
-
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
                 Text(component.name)
                     .font(.largeTitle)
                     .padding()
-
+                
                 Text(component.category)
                     .font(.subheadline)
                     .foregroundColor(.gray)
-
+                
                 Text("Documentation:")
                     .font(.headline)
-
+                
                 Button("View Documentation") {
                     showingDocumentation = true
                     
@@ -34,16 +34,16 @@ struct ComponentDetailView: View {
                 .sheet(isPresented: $showingDocumentation) {
                     SafariView(url: URL(string: component.documentationURL)!)
                 }
-
+                
                 Text("Example Code:")
                     .font(.headline)
-
+                
                 Text(component.exampleCode)
                     .font(.body)
                     .padding()
                     .background(Color.gray.opacity(0.2))
                     .cornerRadius(8)
-
+                
                 Spacer()
             }
             .padding()
@@ -54,11 +54,11 @@ struct ComponentDetailView: View {
 
 struct SafariView: UIViewControllerRepresentable {
     var url: URL
-
+    
     func makeUIViewController(context: Context) -> SFSafariViewController {
         return SFSafariViewController(url: url)
     }
-
+    
     func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {}
 }
 //

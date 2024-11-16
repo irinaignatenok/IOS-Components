@@ -18,6 +18,7 @@ struct ProgressViewDetailView: View {
     var body: some View {
         NavigationStack{
             List{
+//                present a code of the Progress VIew
                 ButtonWithLabel(label: "Progress View") {
                     showingCode.toggle()
                     
@@ -37,7 +38,7 @@ struct ProgressViewDetailView: View {
             }
             .sheet(isPresented: $isPresented) {
                 SFSafariView(url:URL(string:
-                                component.documentationURL)!)
+                                        component.documentationURL)!)
             }
             .sheet(isPresented: $showingCode) {
                 CodeSheet(isPresented: $showingCode, component: component, viewModel: viewModel)
@@ -63,7 +64,7 @@ struct ProgressViewDetailView_Previews: PreviewProvider {
 }
 struct LinearProgressDemoView: View {
     @State private var progress = 0.5
-
+    
     var body: some View {
         VStack {
             ProgressView(value: progress)
@@ -74,11 +75,11 @@ struct LinearProgressDemoView: View {
 
 struct DateRelativeProgressDemoView: View {
     let workoutDateRange = Date()...Date().addingTimeInterval(5*60)
-
+    
     var body: some View {
-         ProgressView(timerInterval: workoutDateRange) {
-             Text("Workout")
-         }
-         .tint(.green)
+        ProgressView(timerInterval: workoutDateRange) {
+            Text("Workout")
+        }
+        .tint(.green)
     }
 }

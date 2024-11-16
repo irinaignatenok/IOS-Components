@@ -15,7 +15,7 @@ struct StackDetailView: View {
     @State private var showVstack = false
     @State private var showZstack = false
     @State private var selectedView: StackView = .hstack
-   
+    
     
     var body: some View {
         NavigationStack {
@@ -30,14 +30,14 @@ struct StackDetailView: View {
                             HeaderView(title: "HStack", isShown: $showHstack)
                         }
                         .foregroundStyle(.blue)
-                            ScrollView(.horizontal) {
-                                HStack {
-                                    ForEach(0..<15) { _ in
-                                        RepeatedItems()
-                                    }
+                        ScrollView(.horizontal) {
+                            HStack {
+                                ForEach(0..<15) { _ in
+                                    RepeatedItems()
                                 }
-                                .padding()
                             }
+                            .padding()
+                        }
                         
                     case .vstack:
                         HStack{
@@ -59,30 +59,30 @@ struct StackDetailView: View {
                         .foregroundStyle(.blue)
                         ZStack {
                             ForEach(0..<10) { index in
-                                     RepeatedItems()
+                                RepeatedItems()
                                     .padding(10)
                                     .offset(x: CGFloat(index * 5), y: CGFloat(index * 5))
                             }
-                                }
-                            .padding()
                         }
+                        .padding()
+                    }
                 }
                 .navigationTitle("")
                 .toolbar {
                     CustomToolbar(title: component.name, isPresented: $isPresented)
                 }
-
-                }
-    
-                Picker("Select Stack", selection: $selectedView) {
-                    ForEach(StackView.allCases) { flavor in
-                        Text(flavor.rawValue.capitalized)
-                    }
-                }
-                .pickerStyle(.palette)
-                .padding()
+                
             }
-            Spacer()
+            
+            Picker("Select Stack", selection: $selectedView) {
+                ForEach(StackView.allCases) { flavor in
+                    Text(flavor.rawValue.capitalized)
+                }
+            }
+            .pickerStyle(.palette)
+            .padding()
+        }
+        Spacer()
             .sheet(isPresented: $isPresented) {
                 SFSafariView(url: URL(string: component.documentationURL)!)
             }
@@ -91,18 +91,18 @@ struct StackDetailView: View {
             }
             .sheet(isPresented: $showVstack) {
                 SFSafariView(url:URL(string:
-                                "https://developer.apple.com/documentation/swiftui/vstack")!)
+                                        "https://developer.apple.com/documentation/swiftui/vstack")!)
             }
             .sheet(isPresented: $showHstack) {
                 SFSafariView(url:URL(string:
-                                "https://developer.apple.com/documentation/swiftui/hstack")!)
+                                        "https://developer.apple.com/documentation/swiftui/hstack")!)
             }
             .sheet(isPresented: $showZstack) {
                 SFSafariView(url:URL(string:
-                                "https://developer.apple.com/documentation/swiftui/zstack")!)
+                                        "https://developer.apple.com/documentation/swiftui/zstack")!)
             }
-        }
     }
+}
 
 
 struct RepeatedItems: View {

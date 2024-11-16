@@ -31,16 +31,18 @@ struct NavigationStackDetailView: View {
             .toolbar {
                 CustomToolbar(title: component.name, isPresented: $isPresented)
             }
+         
         }
         .sheet(isPresented: $isPresented) {
             if let url = URL(string: component.documentationURL) {
                 SFSafariView(url: url)
             }
         }
+      
     }
 }
 
-struct CollegeDetails: View {
+struct CollegeDetails: Hashable, View {
     let college: College
     
     var body: some View {

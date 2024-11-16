@@ -5,7 +5,7 @@ struct ListDetailView: View {
     var viewModel: ComponentListViewModel
     @State private var showingCode = false
     @State private var isPresented = false
-
+    
     var body: some View {
         NavigationStack {
             List {
@@ -21,7 +21,7 @@ struct ListDetailView: View {
                     .listStyle(PlainListStyle())
                     .frame(height: 130)
                 }
-
+                
                 Section("Inset List") {
                     HStack {
                         Text("Inset List")
@@ -35,7 +35,7 @@ struct ListDetailView: View {
                     .listStyle(InsetListStyle())
                     .frame(height: 130)
                 }
-
+                
                 Section("Grouped List") {
                     List {
                         Section(header: Text("Section 1")) {
@@ -50,7 +50,7 @@ struct ListDetailView: View {
                     .listStyle(GroupedListStyle())
                     .frame(height: 260)
                 }
-
+                
                 Section("Inset Grouped List") {
                     List {
                         Section(header: Text("Section 1")) {
@@ -65,7 +65,7 @@ struct ListDetailView: View {
                     .listStyle(InsetGroupedListStyle())
                     .frame(height: 280)
                 }
-
+                
                 // Sidebar section
                 Section("Sidebar List") {
                     NavigationLink(destination: StackDetailView(component: component, viewModel: viewModel)) {

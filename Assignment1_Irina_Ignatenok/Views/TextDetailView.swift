@@ -25,6 +25,8 @@ struct TextDetailView: View {
     
     var body: some View {
         NavigationStack {
+            
+//            List of all text components(Label, Text, Text Field, Security Field, Text Area)
             List {
                 Section("Label"){
                     HeaderView(title: "Label", isShown: $showingDocumentation)
@@ -96,29 +98,29 @@ struct TextDetailView: View {
                     
                 }
             }
-                
-                .sheet(isPresented: $showingDocumentation) {
-                    SFSafariView(url:  URL(string:"https://developer.apple.com/documentation/swiftui/label")!)
-                }
-                .sheet(isPresented: $isTextField) {
-                    SFSafariView(url:  URL(string:"https://developer.apple.com/documentation/swiftui/textfield")!)
-                }
-                .sheet(isPresented: $isSecure) {
-                    SFSafariView(url:  URL(string:"https://developer.apple.com/documentation/swiftui/securefield")!)
-                }
-                .sheet(isPresented: $isTextArea) {
-                    SFSafariView(url:  URL(string:"https://developer.apple.com/documentation/swiftui/texteditor")!)
-                }
+//            Sheets with apple documentation
+            .sheet(isPresented: $showingDocumentation) {
+                SFSafariView(url:  URL(string:"https://developer.apple.com/documentation/swiftui/label")!)
             }
-            .navigationTitle("")
-            .toolbar {
-                CustomToolbar(title: component.name, isPresented: $isPresented)
+            .sheet(isPresented: $isTextField) {
+                SFSafariView(url:  URL(string:"https://developer.apple.com/documentation/swiftui/textfield")!)
             }
-            .sheet(isPresented: $isPresented) {
-                SFSafariView(url:URL(string: component.documentationURL)!)
+            .sheet(isPresented: $isSecure) {
+                SFSafariView(url:  URL(string:"https://developer.apple.com/documentation/swiftui/securefield")!)
+            }
+            .sheet(isPresented: $isTextArea) {
+                SFSafariView(url:  URL(string:"https://developer.apple.com/documentation/swiftui/texteditor")!)
             }
         }
+        .navigationTitle("")
+        .toolbar {
+            CustomToolbar(title: component.name, isPresented: $isPresented)
+        }
+        .sheet(isPresented: $isPresented) {
+            SFSafariView(url:URL(string: component.documentationURL)!)
+        }
     }
+}
 
 
 struct TextDetailView_Previews: PreviewProvider {

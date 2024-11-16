@@ -20,22 +20,22 @@ struct SheetDetailView: View {
                 ButtonWithLabel(label: "Alert") {
                     showingCode.toggle()
                 }
-
+                
                 HStack {
                     Text("Show Sheet")
                     
                     Spacer()
-
+                    
                     Button(action: {
                         isPresentedSheet = true
                     }, label: {
                         Text("Show Sheet")
                     })
                     .buttonStyle(.borderedProminent)
-
+                    
                 }
             }
-        
+            
         }
         .toolbar {
             CustomToolbar(title: component.name, isPresented: $isPresented)
